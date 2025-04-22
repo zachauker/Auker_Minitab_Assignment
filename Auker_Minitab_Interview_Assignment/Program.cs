@@ -1,3 +1,8 @@
+using Auker_Minitab_Interview_Assignment.Repositories;
+using Auker_Minitab_Interview_Assignment.Repositories.Impl;
+using Auker_Minitab_Interview_Assignment.Services;
+using Auker_Minitab_Interview_Assignment.Services.Impl;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,31 +19,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+builder.Services.AddHttpClient<AddressValidationService>();
+builder.Services.AddScoped<IAddressValidationService, AddressValidationService>();
+builder.Services.AddScoped<ICrmRepository, FakeCrmRepository>();
+
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
