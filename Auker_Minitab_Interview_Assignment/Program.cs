@@ -8,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient<AddressValidationService>();
+builder.Services.AddScoped<IAddressValidationService, AddressValidationService>();
+builder.Services.AddScoped<ICrmRepository, FakeCrmRepository>();
 
 var app = builder.Build();
 
@@ -19,10 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-builder.Services.AddHttpClient<AddressValidationService>();
-builder.Services.AddScoped<IAddressValidationService, AddressValidationService>();
-builder.Services.AddScoped<ICrmRepository, FakeCrmRepository>();
-
+app.MapControllers();
+app.UseAuthorization();
 app.UseHttpsRedirection();
 
 app.Run();
