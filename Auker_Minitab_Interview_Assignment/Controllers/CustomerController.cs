@@ -13,11 +13,11 @@ public class CustomerController(IAddressValidationService validator, ICrmReposit
     [HttpPost]
     public async Task<IActionResult> PostCustomer([FromBody] Customer customer)
     {
-        var isAddressValid = await validator.IsAddressValidAsync(customer.Address);
+        var isAddressValid = customer.Address != null && await validator.IsAddressValidAsync(customer.Address);
 
         // If address returns as invalid throw error.
         if (!isAddressValid)
-            return BadRequest("Address is not valid");
+            customer.Address = null;
 
         // Call CRM upsert method.
         await crm.UpsertCustomer(customer);

@@ -4,5 +4,5 @@ public class Customer
 {
     public string Name { get; set; }
     public string EmailAddress { get; set; }
-    public Address Address { get; set; }
+    public Address? Address{ get; set; }
 }

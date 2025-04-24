@@ -3,6 +3,11 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=97ccc4b3_002D0cb4_002D4208_002Dbdfd_002Db48d5b6502fe/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PostCustomer_ValidAddress_CallsCrmWithAddress #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.CustomerControllerTests.PostCustomer_ValidAddress_CallsCrmWithAddress&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.CustomerControllerTests.PostCustomer_WithInvalidAddress_SavesWithoutAddress&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.CustomerControllerTests.PostCustomer_WithNullPayload_ReturnsBadRequest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.CustomerControllerTests.PostCustomer_WithNoAddress_StillUpserts&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.ValidatorTests.GeoapifyValidator_WithHighConfidence_ReturnsTrue&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::0A146643-CEF0-479B-A68D-3A6A958EB0B3::net8.0::Testing.ValidatorTests.AddressValidator_WithHighConfidence_ReturnsTrue&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dd759c01_002D0893_002D4159_002D906d_002Dbad4d4024fcc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="PostCustomer_ValidAddress_CallsCrmWithAddress" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
