@@ -24,18 +24,21 @@ public class FakeCrmRepository : ICrmRepository
             List<Customer> customers;
             if (File.Exists(FilePath))
             {
+                // Load customers.json file and deserialize contents.
                 var existingJson = File.ReadAllText(FilePath);
                 customers = JsonSerializer.Deserialize<List<Customer>>(existingJson)
                             ?? [];
             }
             else
             {
-                customers = new List<Customer>();
+                customers = [];
             }
 
+            // Check if customer already exists in JSON file by matching email address.
             var existing = customers.FirstOrDefault(c =>
                 string.Equals(c.EmailAddress, customer.EmailAddress, StringComparison.OrdinalIgnoreCase));
 
+            // If customer doesn't already exist then create it. 
             if (existing != null)
             {
                 existing.Name = customer.Name;
@@ -46,14 +49,14 @@ public class FakeCrmRepository : ICrmRepository
                 customers.Add(customer);
             }
 
+            // Write customer data to JSON file.
             var newJson = JsonSerializer.Serialize(customers, JsonOptions);
             File.WriteAllText(FilePath, newJson);
         }
 
         await Task.CompletedTask;
     }
-
-
+    
     public Task<Customer?> GetCustomerByEmail(string email)
     {
         throw new NotImplementedException();
