@@ -56,14 +56,4 @@ public class FakeCrmRepository : ICrmRepository
 
         await Task.CompletedTask;
     }
-    
-    public Task<Customer?> GetCustomerByEmail(string email)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<Customer>> GetAllCustomers()
-    {
-        throw new NotImplementedException();
-    }
 }

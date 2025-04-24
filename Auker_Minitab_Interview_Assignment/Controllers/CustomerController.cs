@@ -15,7 +15,7 @@ public class CustomerController(IAddressValidationService validator, ICrmReposit
     {
         var isAddressValid = customer.Address != null && await validator.IsAddressValidAsync(customer.Address);
 
-        // If address returns as invalid throw error.
+        // If address returns as invalid set to null and continue with upsert.
         if (!isAddressValid)
             customer.Address = null;
 
