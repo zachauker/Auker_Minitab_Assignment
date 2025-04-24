@@ -36,7 +36,7 @@ public class ValidatorTests
         var client = new HttpClient(handlerMock.Object);
 
         var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(new Dictionary<string, string> { { "Geoapify:ApiKey", "fake" } })
+            .AddInMemoryCollection(new Dictionary<string, string> { { "Geoapify:ApiKey", "fake" } }!)
             .Build();
 
         var logger = new Mock<ILogger<AddressValidationService>>();
